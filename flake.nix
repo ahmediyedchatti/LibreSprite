@@ -25,7 +25,11 @@
           #     sha256 = pkgs.lib.fakeSha256; # nix build will tell you the real one
           #     fetchSubmodules = true; # needed: third_party/simpleini and src/flic
           #   };
-          src = ./.;
+          src = pkgs.lib.cleanSourceWith {
+            src = ./.;
+            filter = path: type:
+              baseNameOf path != "build" && baseNameOf path != "result";
+          };
 
           nativeBuildInputs = with pkgs; [
             cmake
