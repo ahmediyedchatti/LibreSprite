@@ -48,10 +48,10 @@
             nodejs
             zlib
             libarchive
-            xorg.libX11
-            xorg.libXext
-            xorg.libXcursor
-            xorg.libXi
+            libX11
+            libXext
+            libXcursor
+            libXi
           ];
 
           cmakeFlags = [
