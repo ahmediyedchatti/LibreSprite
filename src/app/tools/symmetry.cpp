@@ -50,9 +50,11 @@ void Diagonal45Symmetry::generateStrokes(const Stroke& mainStroke, Strokes& stro
 {
   strokes.push_back(mainStroke);
 
+  int adjust = (loop->getBrush()->bounds().w % 2);
+  
   Stroke stroke2;
   for (const auto& pt : mainStroke)
-    stroke2.addPoint({m_x - (pt.y - m_y), m_y - (pt.x - m_x), pt.pressure});
+    stroke2.addPoint({m_x - (pt.y - m_y + adjust), m_y - (pt.x - m_x + adjust), pt.pressure});
   strokes.push_back(stroke2);
 }
 
